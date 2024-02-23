@@ -1,0 +1,34 @@
+name: build and testing
+
+on:
+  pull_request:
+    branches:
+      - temp
+  push:
+    branches:
+      - temp
+
+jobs:
+  bulding:
+    runs-on: ubuntu-latest
+    name: run build
+    defaults:
+      run:
+        shell: bash
+    steps:
+       - name: checkout repository
+         uses: actions/checkout@v2
+         
+       - name: installing dependencies
+         run: yarn
+       - name: installing dependencies
+         run: yarn lint
+       
+       - name: running tests
+         run: yarn test
+        
+       - name: running build
+         run: yarn build
+         
+
+    
